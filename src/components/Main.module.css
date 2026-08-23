@@ -1,0 +1,116 @@
+.aboutSection {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.aboutSection h1 {
+  font-size: 48px;
+}
+
+.skillsSection {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.skillsGrid {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.skillCard {
+  background-color: #222;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.skillCard:hover {
+  background-color: #1abc9c;
+}
+
+.storeSection {
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buyBtn {
+  background-color: #1abc9c;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buyBtn:hover {
+  background-color: #16a085;
+}
+
+.buyBtn:active {
+  transform: scale(0.95);
+}
+
+.contactSection {
+  text-align: center;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.contactForm textarea {
+  resize: vertical;
+}
+
+.submitBtn {
+  background-color: #1abc9c;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #16a085;
+}
+
+.submitBtn:active {
+  transform: scale(0.95);
+}
+
+.errorText {
+  display: none;
+  color: red;
+  font-size: 12px;
+}

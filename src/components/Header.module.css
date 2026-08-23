@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #222;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navMenu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+.navMenu a:hover {
+  color: #1abc9c;
+}
+
+.buyBtn {
+  background-color: #1abc9c;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buyBtn:hover {
+  background-color: #16a085;
+}
+
+.buyBtn:active {
+  transform: scale(0.95);
+}
