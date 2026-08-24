@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import styles from "./Main.module.css";
 
+const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function Main({ onAddToCart }) {
   const [catalog, setCatalog] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState("default");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const onlyCheap = () => setFilter("cheap");
   const showAll = () => setFilter("all");
@@ -36,6 +44,29 @@ function Main({ onAddToCart }) {
     displayCatalog.sort((a, b) => b.price - a.price);
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setNameError("");
+    setEmailError("");
+
+    let isFormValid = true;
+
+    if (!nameRegex.test(name)) {
+      setNameError("Можно вводить только буквы");
+      isFormValid = false;
+    }
+    if (!emailRegex.test(email)) {
+      setEmailError("Некорректный e-mail");
+      isFormValid = false;
+    }
+    if (isFormValid) {
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
+  };
+
   return (
     <main className={styles.mainContent}>
       <section id="about" className={styles.aboutSection}>
@@ -44,6 +75,7 @@ function Main({ onAddToCart }) {
           Frontend-разработчик. Здесь будут мои проекты и эксклюзивный мерч.
         </p>
       </section>
+
       <section id="skills" className={styles.skillsSection}>
         <h2>Технологии и навыки</h2>
         <div className={styles.skillsGrid}>
@@ -59,6 +91,7 @@ function Main({ onAddToCart }) {
           <div className={styles.skillCard}>ООП (Классы)</div>
         </div>
       </section>
+
       <section id="store" className={styles.storeSection}>
         <h2>Эксклюзивный мерч</h2>
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
@@ -96,14 +129,46 @@ function Main({ onAddToCart }) {
           ))}
         </div>
       </section>
+
       <section id="contact" className={styles.contactSection}>
         <h2>Связаться со мной</h2>
-        <form className={styles.contactForm} id="contact-form">
-          <input type="text" placeholder="Ваше имя" required />
-          <span className={styles.errorText} id="name-error"></span>
-          <input type="email" placeholder="Ваш Email" required />
-          <span className={styles.errorText} id="email-error"></span>
-          <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+        <form
+          className={styles.contactForm}
+          id="contact-form"
+          onSubmit={handleSubmit}
+        >
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            type="text"
+            placeholder="Ваше имя"
+            required
+          />
+          {nameError && (
+            <span className={styles.errorText} id="name-error">
+              {nameError}
+            </span>
+          )}
+          <input
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            type="email"
+            placeholder="Ваш Email"
+            required
+          />
+          {emailError && (
+            <span className={styles.errorText} id="email-error">
+              {emailError}
+            </span>
+          )}
+
+          <textarea
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+            placeholder="Ваше сообщение"
+            rows="5"
+            required
+          ></textarea>
           <button type="submit" className={styles.submitBtn}>
             Отправить
           </button>
