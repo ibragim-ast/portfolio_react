@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
+import ContactForm from "./ContactForm";
 import styles from "./Main.module.css";
-
-const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s]+$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function Main({ onAddToCart }) {
   const [catalog, setCatalog] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState("default");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [emailError, setEmailError] = useState("");
 
   const onlyCheap = () => setFilter("cheap");
   const showAll = () => setFilter("all");
@@ -43,29 +36,6 @@ function Main({ onAddToCart }) {
   } else if (sortOrder === "desc") {
     displayCatalog.sort((a, b) => b.price - a.price);
   }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setNameError("");
-    setEmailError("");
-
-    let isFormValid = true;
-
-    if (!nameRegex.test(name)) {
-      setNameError("Можно вводить только буквы");
-      isFormValid = false;
-    }
-    if (!emailRegex.test(email)) {
-      setEmailError("Некорректный e-mail");
-      isFormValid = false;
-    }
-    if (isFormValid) {
-      setName("");
-      setEmail("");
-      setMessage("");
-    }
-  };
 
   return (
     <main className={styles.mainContent}>
@@ -132,47 +102,7 @@ function Main({ onAddToCart }) {
 
       <section id="contact" className={styles.contactSection}>
         <h2>Связаться со мной</h2>
-        <form
-          className={styles.contactForm}
-          id="contact-form"
-          onSubmit={handleSubmit}
-        >
-          <input
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            type="text"
-            placeholder="Ваше имя"
-            required
-          />
-          {nameError && (
-            <span className={styles.errorText} id="name-error">
-              {nameError}
-            </span>
-          )}
-          <input
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            type="email"
-            placeholder="Ваш Email"
-            required
-          />
-          {emailError && (
-            <span className={styles.errorText} id="email-error">
-              {emailError}
-            </span>
-          )}
-
-          <textarea
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-            placeholder="Ваше сообщение"
-            rows="5"
-            required
-          ></textarea>
-          <button type="submit" className={styles.submitBtn}>
-            Отправить
-          </button>
-        </form>
+        <ContactForm />
       </section>
     </main>
   );
