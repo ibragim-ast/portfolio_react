@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-function Header({ count, onClearCart }) {
+function Header({ count, onClearCart, onCartOpen }) {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>Ibragim.Dev</div>
@@ -10,7 +10,7 @@ function Header({ count, onClearCart }) {
         <a href="#store">Мерч</a>
         <a href="#contact">Связаться</a>
       </nav>
-      <div className={styles.cart}>
+      <div className={styles.cart} onClick={onCartOpen}>
         Корзина: <span>{count}</span>
       </div>
       <button

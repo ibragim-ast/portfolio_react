@@ -2,23 +2,43 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import CartOverlay from "./components/CartOverlay";
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState([]);
 
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
   };
 
   const handleClearCart = () => {
-    setCartCount(0);
+    setCart([]);
   };
+
+  const handleCartOpen = () => {
+    setIsCartOpen(true);
+  };
+
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   return (
     <div className="app">
-      <Header count={cartCount} onClearCart={handleClearCart} />
+      <Header
+        count={cart.length}
+        onClearCart={handleClearCart}
+        onCartOpen={handleCartOpen}
+      />
       <Main onAddToCart={handleAddToCart} />
       <Footer />
+      {isCartOpen && (
+        <CartOverlay
+          cart={cart}
+          onClose={() => setIsCartOpen(false)}
+          total={totalPrice}
+        />
+      )}
     </div>
   );
 }

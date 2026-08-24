@@ -92,7 +92,10 @@ function Main({ onAddToCart }) {
               />
               <h3>{item.title}</h3>
               <p>{item.price}</p>
-              <button className={styles.buyBtn} onClick={onAddToCart}>
+              <button
+                className={styles.buyBtn}
+                onClick={() => onAddToCart(item)}
+              >
                 Купить
               </button>
             </div>
