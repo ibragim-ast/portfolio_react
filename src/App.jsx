@@ -10,10 +10,14 @@ function App() {
     setCartCount(cartCount + 1);
   };
 
+  const handleClearCart = () => {
+    setCartCount(0);
+  };
+
   return (
     <div className="app">
-      <Header count={cartCount} />
-      <Main onAddToCart={handleAddToCart}/>
+      <Header count={cartCount} onClearCart={handleClearCart} />
+      <Main onAddToCart={handleAddToCart} />
       <Footer />
     </div>
   );

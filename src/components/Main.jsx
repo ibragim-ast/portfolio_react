@@ -3,15 +3,12 @@ import styles from "./Main.module.css";
 
 function Main({ onAddToCart }) {
   const [catalog, setCatalog] = useState([]);
-  const [displayCatalog, setDisplayCatalog] = useState([]);
+  const [filter, setFilter] = useState("all");
+  const [sortOrder, setSortOrder] = useState("default");
 
-  const onlyCheap = () => {
-    setDisplayCatalog(catalog.filter((item) => item.price < 50));
-  };
-
-  const showAll = () => {
-    setDisplayCatalog(catalog);
-  };
+  const onlyCheap = () => setFilter("cheap");
+  const showAll = () => setFilter("all");
+  const sortCatalog = (event) => setSortOrder(event.target.value);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -19,7 +16,6 @@ function Main({ onAddToCart }) {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         setCatalog(data);
-        setDisplayCatalog(data);
       } catch (error) {
         console.error("Ошибка при загрузке:", error);
       }
@@ -27,6 +23,18 @@ function Main({ onAddToCart }) {
 
     fetchProducts();
   }, []);
+
+  let displayCatalog = [...catalog];
+
+  if (filter === "cheap") {
+    displayCatalog = displayCatalog.filter((item) => item.price < 50);
+  }
+
+  if (sortOrder === "asc") {
+    displayCatalog.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    displayCatalog.sort((a, b) => b.price - a.price);
+  }
 
   return (
     <main className={styles.mainContent}>
@@ -64,6 +72,7 @@ function Main({ onAddToCart }) {
             id="sort-select"
             className={styles.buyBtn}
             style={{ marginLeft: "10px" }}
+            onChange={sortCatalog}
           >
             <option value="default">Сортировка по умолчанию</option>
             <option value="asc">Сначала дешевые</option>

@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-function Header({ count }) {
+function Header({ count, onClearCart }) {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>Ibragim.Dev</div>
@@ -17,6 +17,7 @@ function Header({ count }) {
         id="clear-cart"
         className={styles.buyBtn}
         style={{ backgroundColor: "#e74c3c", marginLeft: "15px" }}
+        onClick={onClearCart}
       >
         Очистить
       </button>
