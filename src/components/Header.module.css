@@ -37,3 +37,64 @@
 .buyBtn:active {
   transform: scale(0.95);
 }
+
+.logo {
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+
+.logoBold {
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.logoDot {
+  color: #1abc9c;
+  font-weight: 900;
+}
+
+.logoLight {
+  font-weight: 300;
+  color: #a0aec0;
+}
+
+.cartContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.cartIcon {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.cartContainer:hover .cartIcon {
+  color: #1abc9c;
+  transform: scale(1.1);
+}
+
+.cartBadge {
+  position: absolute;
+  top: -2px;
+  right: -8px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid #222;
+}

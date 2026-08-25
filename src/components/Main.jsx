@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import ContactForm from "./ContactForm";
+import HeroBlock from "./HeroBlock";
+import ProjectsBlock from "./ProjectsBlock";
+import AboutBlock from "./AboutBlock";
 import styles from "./Main.module.css";
 
 function Main({ onAddToCart }) {
@@ -39,28 +42,9 @@ function Main({ onAddToCart }) {
 
   return (
     <main className={styles.mainContent}>
-      <section id="about" className={styles.aboutSection}>
-        <h1>Привет, я Ибрагим!</h1>
-        <p>
-          Frontend-разработчик. Здесь будут мои проекты и эксклюзивный мерч.
-        </p>
-      </section>
-
-      <section id="skills" className={styles.skillsSection}>
-        <h2>Технологии и навыки</h2>
-        <div className={styles.skillsGrid}>
-          <div className={styles.skillCard}>HTML5 & CSS3</div>
-          <div className={styles.skillCard}>JavaScript</div>
-          <div className={styles.skillCard}>CSS Grid & Flexbox</div>
-          <div className={styles.skillCard}>Git & Terminal</div>
-          <div className={styles.skillCard}>Адаптивная верстка</div>
-          <div className={styles.skillCard}>Webpack & Сборка</div>
-          <div className={styles.skillCard}>ES6 Модули</div>
-          <div className={styles.skillCard}>Async / Await & API</div>
-          <div className={styles.skillCard}>Regex & Валидация</div>
-          <div className={styles.skillCard}>ООП (Классы)</div>
-        </div>
-      </section>
+      <HeroBlock />
+      <AboutBlock />
+      <ProjectsBlock />
 
       <section id="store" className={styles.storeSection}>
         <h2>Эксклюзивный мерч</h2>
