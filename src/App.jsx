@@ -40,10 +40,6 @@ function App() {
     }
   };
 
-  const handleClearCart = () => {
-    setCart([]);
-  };
-
   const handleCartOpen = () => {
     setIsCartOpen(true);
   };
@@ -79,11 +75,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header
-        count={totalItems}
-        onClearCart={handleClearCart}
-        onCartOpen={handleCartOpen}
-      />
+      <Header count={totalItems} onCartOpen={handleCartOpen} />
       <Main onAddToCart={handleAddToCart} />
       <Footer />
       {isCartOpen && (
