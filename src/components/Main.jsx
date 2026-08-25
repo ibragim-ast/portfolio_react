@@ -4,6 +4,7 @@ import HeroBlock from "./HeroBlock";
 import ProjectsBlock from "./ProjectsBlock";
 import AboutBlock from "./AboutBlock";
 import styles from "./Main.module.css";
+import StoreBlock from "./StoreBlock";
 
 function Main({ onAddToCart }) {
   const [catalog, setCatalog] = useState([]);
@@ -45,8 +46,9 @@ function Main({ onAddToCart }) {
       <HeroBlock />
       <AboutBlock />
       <ProjectsBlock />
+      <StoreBlock />
 
-      <section id="store" className={styles.storeSection}>
+      {/* <section id="store" className={styles.storeSection}>
         <h2>Эксклюзивный мерч</h2>
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
           <button id="btn-all" className={styles.buyBtn} onClick={showAll}>
@@ -85,7 +87,7 @@ function Main({ onAddToCart }) {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section id="contact" className={styles.contactSection}>
         <h2>Связаться со мной</h2>
