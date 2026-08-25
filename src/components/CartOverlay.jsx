@@ -1,6 +1,6 @@
 import styles from "./CartOverlay.module.css";
 
-function CartOverlay({ cart, total, onClose }) {
+function CartOverlay({ cart, count, total, onClose }) {
   return (
     <div className={styles.cartOverlay}>
       <div className={styles.modalBox}>
@@ -19,7 +19,7 @@ function CartOverlay({ cart, total, onClose }) {
           ))}
         </div>
         <p>
-          В корзине {cart.length} товаров на сумму {total} руб.
+          В корзине {count} товаров на сумму {total.toFixed(2)} руб.
         </p>
         <button className={styles.closeBtn} onClick={onClose}>
           Закрыть

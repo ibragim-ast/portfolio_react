@@ -10,7 +10,21 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
+    const existingItem = cart.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      setCart(() =>
+        cart.map((item) => {
+          if (item.id === product.id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        }),
+      );
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   };
 
   const handleClearCart = () => {
@@ -21,12 +35,17 @@ function App() {
     setIsCartOpen(true);
   };
 
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="app">
       <Header
-        count={cart.length}
+        count={totalItems}
         onClearCart={handleClearCart}
         onCartOpen={handleCartOpen}
       />
@@ -37,6 +56,7 @@ function App() {
           cart={cart}
           onClose={() => setIsCartOpen(false)}
           total={totalPrice}
+          count={totalItems}
         />
       )}
     </div>
