@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./StoreBlock.module.css";
 
-function StoreBlock() {
+function StoreBlock({ onAddToCart }) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,7 +39,12 @@ function StoreBlock() {
                 <h3>{item.title}</h3>
                 <div className={styles.buySection}>
                   <p className={styles.price}>{item.price}</p>
-                  <button className={styles.btn}>В корзину</button>
+                  <button
+                    className={styles.btn}
+                    onClick={() => onAddToCart(item)}
+                  >
+                    В корзину
+                  </button>
                 </div>
               </div>
             </div>

@@ -12,12 +12,14 @@
 }
 
 .modalBox {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
   max-height: 80vh;
   overflow-y: auto;
-  background-color: white;
+  background-color: #1e1e1e;
+  color: #fff;
   border-radius: 40px;
   padding: 40px;
   text-align: center;
@@ -35,12 +37,28 @@
   flex-direction: column;
   align-items: center;
   width: 200px;
-  height: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 14px;
-  background-color: white;
+  background-color: #1a1a1a;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quantityLabel {
+  color: #ffa500;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 2px 8px;
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  width: 100%;
 }
 
 .cartImage {
@@ -48,15 +66,52 @@
   height: 70px;
 }
 
-.closeBtn {
-  background-color: #1abc9c;
+.cartFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.checkoutBtn {
+  background: #ffa500;
+  color: #121212;
   border: none;
+  padding: 12px 24px;
   border-radius: 8px;
-  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.closeBtn:hover {
-  background-color: #16a085;
+.checkoutBtn:hover {
+  background: #ff8c00;
+  transform: scale(1.02);
+}
+
+.removeBtn {
+  background: rgba(255, 95, 86, 0.1);
+  color: #ff5f56;
+  border: 1px solid rgba(255, 95, 86, 0.3);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.removeBtn:hover {
+  background: #ff5f56;
+  color: #fff;
+}
+
+.closeIconBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 32px;
+  cursor: pointer;
 }

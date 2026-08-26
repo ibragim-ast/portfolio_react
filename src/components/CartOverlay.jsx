@@ -11,6 +11,9 @@ function CartOverlay({
   return (
     <div className={styles.cartOverlay}>
       <div className={styles.modalBox}>
+        <button className={styles.closeIconBtn} onClick={onClose}>
+          &times;
+        </button>
         <h3>Корзина</h3>
         <div className={styles.cartList}>
           {cart.map((item) => (
@@ -21,32 +24,33 @@ function CartOverlay({
                 className={styles.cartImage}
               />
               <h3>{item.title}</h3>
-              <p>Цена: {item.price} руб.</p>
-              {item.quantity > 1 && (
-                <p className={styles.quantityLabel}>
-                  Количество: {item.quantity} шт.
-                </p>
-              )}
-              <button
-                className={styles.closeBtn}
-                onClick={() => onRemoveItem(item.id)}
-              >
-                Удалить
-              </button>
+              <div className={styles.cardBottom}>
+                {item.quantity > 1 && (
+                  <p className={styles.quantityLabel}>
+                    Количество: {item.quantity} шт.
+                  </p>
+                )}
+                <p>Цена: {item.price} руб.</p>
+
+                <button
+                  className={styles.removeBtn}
+                  onClick={() => onRemoveItem(item.id)}
+                >
+                  Удалить
+                </button>
+              </div>
             </div>
           ))}
         </div>
-        <p>
-          В корзине {count} товаров на сумму {total.toFixed(2)} руб.
-        </p>
+        <div className={styles.cartFooter}>
+          <p>
+            В корзине {count} товаров на сумму {total.toFixed(2)} руб.
+          </p>
 
-        <button className={styles.closeBtn} onClick={() => onCheckout()}>
-          Оформить заказ
-        </button>
-
-        <button className={styles.closeBtn} onClick={onClose}>
-          Закрыть
-        </button>
+          <button className={styles.checkoutBtn} onClick={() => onCheckout()}>
+            Оформить заказ
+          </button>
+        </div>
       </div>
     </div>
   );

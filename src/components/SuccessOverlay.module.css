@@ -12,19 +12,24 @@
 }
 
 .modalBox {
+  background-color: #1e1e1e;
+  color: #fff;
   display: flex;
   flex-direction: column;
   gap: 30px;
   max-height: 80vh;
   overflow-y: auto;
-  background-color: white;
   border-radius: 40px;
   padding: 40px;
   text-align: center;
 }
 
+.modalBox h2 {
+  color: #fff;
+}
+
 .successBtn {
-  background-color: #1abc9c;
+  background-color: #ffa500;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;

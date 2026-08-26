@@ -46,7 +46,7 @@ function Main({ onAddToCart }) {
       <HeroBlock />
       <AboutBlock />
       <ProjectsBlock />
-      <StoreBlock />
+      <StoreBlock onAddToCart={onAddToCart} />
 
       {/* <section id="store" className={styles.storeSection}>
         <h2>Эксклюзивный мерч</h2>
